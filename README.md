@@ -397,6 +397,7 @@ pnpm tauri dev          # or: pnpm tauri build
 
 | Symptom | Cause / fix |
 | --- | --- |
+| Window says `could not connect to localhost` (nothing renders) | the binary was built with a bare `cargo build --release`. That is a **dev-mode** build: Tauri only embeds the built frontend when driven by its CLI, otherwise the window loads `devUrl` (`http://localhost:1420`) and you see that error. Build with `pnpm build:linux` (or `scripts/build-linux.sh`) — `cargo build` is only a compile check. |
 | `Failed to resolve runner template` | you skipped the runner: `pnpm build:runner:linux && pnpm copy:runner:linux` |
 | GUI Play fails, CLI works | the GUI resolves its runner through Tauri's resource dir, which on Linux is `<exe dir>/../lib/<productName>` (else `$APPDIR/usr/lib/<productName>`, else `/usr/lib/<productName>`) and then asks for `data/src-linux` — the `.deb` layout. A portable copy therefore needs `~/.local/lib/Discord Quest Completer/data/src-linux`. `install.sh --with-gui` installs exactly that; copying the bare binary elsewhere breaks Play while the CLI keeps working. |
 | `webkit2gtk-4.1` not found, or `Package webkit2gtk-4.0 was not found` | wrong package generation; Tauri 2 wants **4.1** |
