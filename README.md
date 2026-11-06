@@ -10,6 +10,10 @@
 > A quest completer for Discord, working on Linux: complete "play a game on your PC"
 > quests without downloading the games.
 
+**Fork of [markterence/discord-quest-completer](https://github.com/markterence/discord-quest-completer)**
+(the original Windows app, MIT). Nothing was removed: the Windows build still works, the Linux
+path is on top of it. `main` tracks upstream, upstream PRs are welcome.
+
 A Windows desktop application for Discord Rich Presence and completing Discord Quest for games without needing to install the full actual games/applications. Perfect for completing Discord Quests and showing off your gaming status without the storage burden.
 
 
